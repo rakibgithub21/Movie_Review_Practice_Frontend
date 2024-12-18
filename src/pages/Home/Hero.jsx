@@ -88,7 +88,7 @@ const Hero = () => {
                                             The romantic drama stars Ilias Kanchan and Anju Ghosh in lead roles.
                                             It tells the love story of Josna, the daughter of a snake charmer, and a prince,
                                             blending elements of folklore, romance, and family drama.
-                                            The film's music, especially the iconic song "Beder Meye Josna Amay Kotha Diyechhe,"
+                                            The films music, especially the iconic song Beder Meye Josna Amay Kotha Diyechhe,
                                             became a cultural phenomenon. This movie remains one of the highest-grossing
                                             and most beloved films in Bangladeshi cinema history.
                                         </p>
