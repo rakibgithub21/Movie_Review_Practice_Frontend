@@ -1,26 +1,46 @@
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { Link } from "react-router-dom";
+import auth from "../../firebase/firebase.config";
+
+
 
 const Signup = () => {
+    
+    const handleSignup = (e) => {
+        e.preventDefault()
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        createUserWithEmailAndPassword(auth, email, password)
+            .then((user) => {
+               console.log(user);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+        
+        
+    }
     return (
-        <div>
+        <div className="min-h-screen flex items-center justify-center">
             <div className="w-full max-w-sm p-6 m-auto mx-auto bg-white rounded-lg shadow-md dark:bg-gray-800">
                 <div className="flex justify-center mx-auto">
                     <h3 className="text-2xl font-medium text-green-500">Sign up your account</h3>
                 </div>
 
-                <form className="mt-6">
+                <form onSubmit={handleSignup} className="mt-6">
                     <div>
-                        <label htmlFor="username" className="block text-sm text-gray-800 dark:text-gray-200">Username</label>
-                        <input type="text" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" />
+                        <label htmlFor="username" className="block text-sm text-gray-800 dark:text-gray-200">Email</label>
+                        <input name="email" type="email" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" />
                     </div>
 
                     <div className="mt-4">
                         <div className="flex items-center justify-between">
                             <label htmlFor="password" className="block text-sm text-gray-800 dark:text-gray-200">Password</label>
-                            <a href="#" className="text-xs text-gray-600 dark:text-gray-400 hover:underline">Forget Password?</a>
+                            
                         </div>
 
-                        <input type="password" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" />
+                        <input name="password" type="password" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" />
                     </div>
 
                     <div className="mt-6">
