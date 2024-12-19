@@ -1,13 +1,17 @@
+
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { AuthProvider } from "../context/AuthContext";
 
 const Header = () => {
-    const { user } = useContext(AuthProvider)
-    console.log(user);
+    const { user, logOut } = useContext(AuthProvider)
+
+    const handleSignOut = () => {
+        logOut()
+    }
+
     return (
         <div className="container mx-auto">
-            
             <div className="navbar bg-base-100">
                 <div className="navbar-start">
                     <div className="dropdown">
@@ -31,7 +35,7 @@ const Header = () => {
                             <li><NavLink to='/'>Home</NavLink></li>
                             <li> <NavLink to='/signin'>Sign In</NavLink></li>
                             <li><NavLink to='/signup'>Sign In</NavLink></li>
-                           
+
                         </ul>
                     </div>
                     <a className="btn btn-ghost text-xl">daisyUI</a>
@@ -44,7 +48,7 @@ const Header = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="btn">Button</a>
+                    <button onClick={handleSignOut} className="btn">Logout</button>
                 </div>
             </div>
         </div>
