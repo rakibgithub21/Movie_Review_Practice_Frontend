@@ -1,8 +1,13 @@
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { AuthProvider } from "../context/AuthContext";
 
 const Header = () => {
+    const { user } = useContext(AuthProvider)
+    console.log(user);
     return (
         <div className="container mx-auto">
+            
             <div className="navbar bg-base-100">
                 <div className="navbar-start">
                     <div className="dropdown">
