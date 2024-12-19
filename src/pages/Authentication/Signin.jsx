@@ -1,22 +1,25 @@
-import { signInWithEmailAndPassword } from "firebase/auth";
+
+import { useContext } from "react";
 import { Link } from "react-router-dom";
-import auth from "../../firebase/firebase.config";
+import { AuthProvider } from "../../context/AuthContext";
 
 
 const Signin = () => {
+    const { loginUser } = useContext(AuthProvider)
     const handleSignin = (e) => {
         e.preventDefault()
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password);
-        signInWithEmailAndPassword(auth, email, password)
+        // console.log(email, password);
+        loginUser(email, password)
             .then((user) => {
             console.log(user);
             })
             .catch((err) => {
             console.log(err);
         })
+       
     }
     return (
         <div className="min-h-screen flex items-center justify-center">
